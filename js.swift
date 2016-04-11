@@ -8,54 +8,54 @@
 
 import Foundation
 
-struct 计算  {
-    private var 当前算法:算法 = .未选择
+struct calculation  {
+    private var Currentalgorithm:algorithm = .nochoice
     
-    mutating func 设置当前算法(临时:算法) {
-        当前算法 = 临时
+    mutating func setCurrentalgorithm(temporary:algorithm) {
+        Currentalgorithm = temporary
     }
     
-    func 读取当前算法() -> 算法 {
-        return 当前算法
+    func readCurrentalgorithm() -> algorithm {
+        return Currentalgorithm
     }
     
-    enum 算法 {
-        case 加法
-        case 减法
-        case 乘法
-        case 除法
-        case 平方
-        case 指数幂
-        case 未选择
+    enum algorithm {
+        case addition
+        case subtraction
+        case multiplication
+        case division
+        case square
+        case exponential
+        case nochoice
     }
     
-    func 求结果(操作数 操作数:Double, 被操作数:Double) -> String {
-        var 返回 = ""
-        switch 当前算法 {
-        case .加法:
-            返回 = "\(操作数 + 被操作数)"
-        case .减法:
-            返回 = "\(操作数 - 被操作数)"
-        case .乘法:
-            返回 = "\(操作数 * 被操作数)"
-        case .除法 where 被操作数 != 0 :
-            返回 = "\(操作数 / 被操作数)"
-        case .平方:
-            返回 = "\(操作数 * 操作数)"
-        case .指数幂:
-            var 临时 = 操作数
-            let 整形被操作数 = Int(被操作数)
-            for _ in 1..<整形被操作数 {
-                临时 *= 操作数
+    func Resultseeking(Operationnumber Operationnumber:Double, be Operationnumber:Double) -> String {
+        var return = ""
+        switch Currentalgorithm {
+        case .addition:
+            return = "\(Operationnumber + beOperationnumber)"
+        case .subtraction:
+            return = "\(Operationnumber - beOperationnumber)"
+        case .multiplication:
+            return = "\(Operationnumber * beOperationnumber)"
+        case .division where beOperationnumber != 0 :
+            return = "\(Operationnumber / beOperationnumber)"
+        case .square:
+            return = "\(Operationnumber * Operationnumber)"
+        case .exponential:
+            var temporary = Operationnumber
+            let intbeOperationnumber = Int(beOperationnumber)
+            for _ in 1..<intbeOperationnumber {
+                temporary *= Operationnumber
             }
-            返回 = "\(临时)"
-        case .未选择:
-            返回 = "错误：未选择算法！"
+            return = "\(temporary)"
+        case .nochoice:
+            return = "Error, no selection algorithm"
         default:
-            返回 = "0 不能做被除数！"
+            return = "0 不能做be除数！"
             
         }
-        return 返回
+        return
     }
     
 }

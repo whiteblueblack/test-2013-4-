@@ -9,110 +9,120 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var 计算器 = 计算()
-    var 显示缓存 = ""
-    var 缓存 = 0.0
-    var 缓存2:Double?
+    var calculator = calculation ()
+    var Displaycache = ""
+    var cache = 0.0
+    var cache2:Double?
     @IBOutlet weak var pingmu: UITextField!
     
     @IBAction func one(sender: AnyObject) {
-        点按("1")
+        Press("1")
     }
     @IBAction func two(sender: AnyObject) {
-        点按("2")
+        Press("2")
     }
     @IBAction func three(sender: AnyObject) {
-        点按("3")
+        Press("3")
     }
     @IBAction func four(sender: AnyObject) {
-        点按("4")
+        Press("4")
     }
     @IBAction func five(sender: AnyObject) {
-        点按("5")
+        Press("5")
     }
     @IBAction func six(sender: AnyObject) {
-        点按("6")
+        Press("6")
     }
     @IBAction func seven(sender: AnyObject) {
-        点按("7")
+        Press("7")
     }
     @IBAction func eight(sender: AnyObject) {
-        点按("8")
+        Press("8")
     }
     @IBAction func nine(sender: AnyObject) {
-        点按("9")
+        Press("9")
     }
     @IBAction func zero(sender: AnyObject) {
-        点按("0")
+        Press("0")
     }
     @IBAction func dian(sender: AnyObject) {
-        点按(".")
+        Press(".")
     }
     @IBAction func add(sender: AnyObject) {
-        计算器.设置当前算法(.加法)
-        求值( )
+        calculator.setcurrentalgorithm (.addition)
+        evaluation( )
     }
     @IBAction func reduce(sender: AnyObject) {
-        计算器.设置当前算法(.减法)
-        求值( )
+        calculator.Setcurrentalgorithm (.subtraction)
+        evaluation( )
     }
     @IBAction func multiply(sender: AnyObject) {
-        计算器.设置当前算法(.乘法)
-        求值( )
+        calculator.Setcurrentalgorithm(.multiplication)
+        evaluation( )
     }
     @IBAction func remove(sender: AnyObject) {
-        计算器.设置当前算法(.除法)
-        求值( )
+        calculator.Setcurrentalgorithm(.division)
+        evaluation( )
     }
 
-    @IBAction func 平方(sender: AnyObject) {
-        计算器.设置当前算法(.平方)
-        求值( )
+    @IBAction func square(sender: AnyObject) {
+        calculator.Setcurrentalgorithm(.square)
+        evaluation( )
     }
-    @IBAction func 算数指数幂(sender: AnyObject) {
-        计算器.设置当前算法(.指数幂)
-        求值( )
+    @IBAction func Exponentpower(sender: AnyObject) {
+        calculator.Setcurrentalgorithm(.exponential)
+        evaluation( )
     }
-    @IBAction func 重置所有(sender: AnyObject) {
+    @IBAction func Resetall(sender: AnyObject) {
 
     }
-    @IBAction func 结果(sender: AnyObject) {
+    @IBAction func result(sender: AnyObject) {
 
-        求值( )
+        evaluation( )
     }
 
 
-    @IBAction func 重置当前(sender: AnyObject) {
+    @IBAction func Resetcurrent(sender: AnyObject) {
    
     }
     
-    func 点按(数字:String) {
-        显示缓存 += 数字
-        pingmu.text = 显示缓存
+    func Press(number:String) {
+        Displaycache += number
+        pingmu.text = Displaycache
     }
     
-    func 求值() {
-        var 结果 = ""
+    func evaluation() {
+        var result = ""
         
-        if !显示缓存.isEmpty {
-            let 临时 = 显示缓存 as NSString
-            缓存 = 临时.doubleValue
-            显示缓存 = ""
+        if !Displaycache.isEmpty {
+            let temporary = Displaycache as NSString
+            cache = temporary.doubleValue
+            Displaycache = ""
         }
-        let 临时 = 缓存
+        let temporary = cache
         
-        if  let 前一个数字 = 缓存2 {
+        if  let Thepreviousnumber = cache2 {
             
-            结果 = 计算器.求结果(操作数: 前一个数字, 被操作数: 临时)
-            pingmu.text = 结果
-            let 临 = 结果 as NSString
-            缓存2 = 临.doubleValue
+            result = calculator.Resultseeking(Operationnumber: theprevious  number, Operandoperand: temporary)
+            pingmu.text = result
+            let temporary = result as NSString
+            cache2 = temporary.doubleValue
             
         } else {
-            缓存2 = 缓存
-            缓存 = 0.0
+            cache2 = cache
+            cache = 0.0
         }
 }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        pingmu.editing
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 }
 
 
